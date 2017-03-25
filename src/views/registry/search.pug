@@ -22,4 +22,5 @@ block content
       .row
         .col-sm-3
         .col-sm-6
-          h2 #{user.profile.name}
+          h2
+            a(href=`/registry/${user._id}`) #{user.profile.name}
