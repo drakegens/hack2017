@@ -25,7 +25,7 @@ export const getSearchRegistry = (req, res) => {
 }
 
 export const getUserRegistry = (req, res) => {
-    User.findById(req.params.userId, (err, user) => {
+    User.findOne({ registry: req.params.registryId }, (err, user) => {
         res.render('registry/view', {
             title: `${user.profile.name}'s Registry`,
             user: user,
