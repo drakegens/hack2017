@@ -51,23 +51,33 @@ export const saveRegistry = (req, res) => {
 }
 
 export const getUserRegistry = (req, res) => {
-
     User.findOne({ registry: req.params.registryId })
     .populate({
         path: 'registry', 
         populate: {
             path: 'items',
             model: 'Item',
+            populate: {
+                path: 'contributions',
+                model: 'Contribution'
+            },
         },
     })
     .exec( (err, user) => {
-        console.log('data:', user);
         res.render('registry/view', {
             title: `${user.profile.name}'s Registry`,
             user: user,
         })
-
     })
+}
 
-    
+export const  getContribute = (req, res) => {
+    Item.findById(req.params.itemId)
+        .populate('contributions')
+        .exec((err, item) => {
+            res.render('registry/contribute', {
+                title: 'Contribute',
+                item: item,
+            })
+        })
 }
