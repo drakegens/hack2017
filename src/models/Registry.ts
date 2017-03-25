@@ -19,3 +19,10 @@ const registrySchema = new mongoose.Schema({
 
 export const Registry = mongoose.model('Registry', registrySchema)
 
+const contributionSchema = new mongoose.Schema({
+    contributorEmail: String,
+    contributorName: String,
+    amount: Number
+});
+
+export const Contribution = mongoose.model('Contribution', contributionSchema)
