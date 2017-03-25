@@ -5,7 +5,7 @@ const _ = require('lodash')
 
 export const getNewRegistry = (req, res) => {
     res.render('registry/new', {
-        title: 'New Registy',
+        title: 'New Registry',
     })
 }
 
