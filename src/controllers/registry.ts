@@ -95,7 +95,14 @@ export const getContributeSuccess = (req, res) => {
             model: 'Contribution',
         })
         .exec((err, item) => {
-            if (_.isEmpty(contribution) && req.query.paymentStatus === 'APPROVED') {
+            if (req.query.paymentStatus !== 'APPROVED') {
+                return res.render('registry/contribute_failure', {
+                    title: 'Failed Contribution',
+                    item: item,
+                })
+            }
+
+            if (_.isEmpty(contribution) ) {
                 contribution = new Contribution({
                     contributorEmail: '',
                     contributorName: '',
@@ -111,9 +118,9 @@ export const getContributeSuccess = (req, res) => {
 
                 item.save()
             }
-            
+
             res.render('registry/contribute_success', {
-                title: 'Successful contribution',
+                title: 'Successful Contribution',
                 item: item,
             })
         })
