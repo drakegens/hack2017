@@ -1,1 +1,31 @@
-span hello world
+extends ../layout
+
+block content
+  h1 Create New Registry
+  p.lead Add items to your Registry
+  form.form-horizontal(action='/registry/new', method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+    .form-group
+      label.col-sm-3.control-label(for='nameOfItem') Item Name
+      .col-sm-7
+        input.form-control(type='text', name='nameOfItem', id='nameOfItem')
+    .form-group
+      label.col-sm-3.control-label(for='itemPrice') Price ($)
+      .col-sm-7
+        input.form-control(type='number', name='itemPrice', id='itemPrice')
+    .form-group
+      label.col-sm-3.control-label(for='itemDescription') Description
+      .col-sm-7
+        input.form-control(type='text', name='itemDescription', id='itemDescription')
+    .form-group
+      label.col-sm-3.control-label(for='itemURL') URL (Optional)
+      .col-sm-7
+        input.form-control(type='text', name='itemURL', id='itemURL')
+    .form-group
+      .col-sm-offset-2.col-sm-8
+        button.btn.btn-primary(type='submit')
+          | Add Another Item
+    .form-group
+      .col-sm-offset-2.col-sm-8
+        button.btn.btn-primary(type='submit')
+          | Submit Registry
