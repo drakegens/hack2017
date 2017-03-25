@@ -1,7 +1,7 @@
 // import * as bluebird from 'bluebird'
-import Registry from '../models/Registry'
+import { Registry, Item } from '../models/Registry'
 import User from '../models/User'
-import Item from '../models/Registry'
+
 // const passport = require('passport')
 
 export const getNewRegistry = (req, res) => {
@@ -26,30 +26,29 @@ export const getSearchRegistry = (req, res) => {
 
 
 export const saveRegistry = (req, res) => {
-const item = new Item({
-    name: req.body.nameOfItem,
-    price: req.body.itemPrice,
-    link: req.body.itemURL,
-    description: req.body.itemDescription
-})
+    const item = new Item({
+        name: req.body.nameOfItem,
+        price: req.body.itemPrice,
+        link: req.body.itemURL,
+        description: req.body.itemDescription
+    })
 
-item.save();
+    item.save();
 
-const registry = new Registry({
-    userEmail: req.user.email,
-    items: [item._id]
-})
+    const registry = new Registry({
+        userEmail: req.user.email,
+        items: [item._id]
+    })
 
-registry.save();
+    registry.save();
 
-User.findById(req.user.id, (err, user) => {
-user.registry = registry.id;
-user.save();
+    User.findById(req.user.id, (err, user) => {
+        user.registry = registry.id;
+        user.save();
 
-res.redirect(`/registry/${registry.id}`)
-});
-
-
+        res.redirect(`/registry/${registry.id}`)
+    });
+}
 
 export const getUserRegistry = (req, res) => {
     User.findOne({ registry: req.params.registryId }, (err, user) => {
@@ -58,5 +57,4 @@ export const getUserRegistry = (req, res) => {
             user: user,
         })
     })
-
 }

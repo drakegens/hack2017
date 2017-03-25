@@ -7,7 +7,7 @@ const itemSchema = new mongoose.Schema({
     description: String
 })
 
-module.exports = mongoose.model('Item', itemSchema);
+export const Item = mongoose.model('Item', itemSchema);
 
 const registrySchema = new mongoose.Schema({
     userEmail: String,
@@ -17,5 +17,5 @@ const registrySchema = new mongoose.Schema({
     }],
 });
 
-export default mongoose.model('Registry', registrySchema)
+export const Registry = mongoose.model('Registry', registrySchema)
 
