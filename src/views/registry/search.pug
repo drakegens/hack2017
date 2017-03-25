@@ -1,0 +1,25 @@
+extends ../layout
+
+block content
+  .row
+    .col-sm-3
+    .col-sm-6
+      h1 Find a registry
+      form.form-horizontal(action='/registry/search', method='GET')
+        .form-group
+        .input-group
+          .input-group-addon
+            i.fa.fa-search
+          input.form-control(type='text', name='search', id='search', placeholder='Search for a registry', value=search)
+      
+  if users.length == 0
+    .row
+      .col-sm-3
+      .col-sm-6
+        h2 Unable to find any registries under that name
+  else
+    each user in users
+      .row
+        .col-sm-3
+        .col-sm-6
+          h2 #{user.profile.name}
