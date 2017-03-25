@@ -4,7 +4,10 @@ block content
   h1 #{user.profile.name} Registry
   each item in user.registry.items
     h2 Name of Item: #{item.name}
-    h2 Price: $#{item.price} ($#{parseInt(item.price) - (item.contributions == undefined || item.contributions.length > 0 ? _.sum(item.contributions, 'amount') : 0)} left)
+    - var hasContributions = item.contributions != undefined && item.contributions.length > 0
+    - var contributionAmounts = hasContributions ? _.map(item.contributions, function(item){ return parseInt(item.amount, 10) }) : []
+    - var totalContributions = hasContributions ? _.sum(contributionAmounts) : 0
+    h2 Price: $#{item.price} ($#{parseInt(item.price) - totalContributions} left)
     h2 URL: #{item.link}
     h2 Description: #{item.description}
     a.btn.btn-primary(href=`/registry/contribute/${item.id}`) Contribute
