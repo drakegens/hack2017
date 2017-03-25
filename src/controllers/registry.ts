@@ -24,6 +24,7 @@ export const getSearchRegistry = (req, res) => {
     })
 }
 
+
 export const saveRegistry = (req, res) => {
 const item = new Item({
     name: req.body.nameOfItem,
@@ -48,5 +49,14 @@ user.save();
 res.redirect(`/registry/${registry.id}`)
 });
 
+
+
+export const getUserRegistry = (req, res) => {
+    User.findById(req.params.userId, (err, user) => {
+        res.render('registry/view', {
+            title: `${user.profile.name}'s Registry`,
+            user: user,
+        })
+    })
 
 }

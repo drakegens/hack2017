@@ -140,6 +140,9 @@ app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userControl
 app.get('/registry/new', passportConfig.isAuthenticated, registryController.getNewRegistry)
 app.get('/registry/search', registryController.getSearchRegistry)
 app.post('/registry/new', passportConfig.isAuthenticated, registryController.saveRegistry)
+app.get('/registry/:userId', registryController.getUserRegistry)
+
+
 /**
  * API examples routes.
  */
