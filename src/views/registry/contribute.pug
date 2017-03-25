@@ -1,7 +1,9 @@
 extends ../layout
 
 block content
-    h1 Contribute towards #{item.name}
-    script(type='text/javascript', src='https://www.simplify.com/commerce/simplify.pay.js')
-    button(data-sc-key='YOUR_HOSTED_PAYMENTS_ENABLED_PUBLIC_KEY', data-name='Jasmine Green Tea', data-description='Smooth tea with a rich jasmine bouquet', data-reference='99999', data-amount='3000', data-color='#12B830')
-    | Buy Now
+  h1 Contribute towards #{item.name}
+  button(data-sc-key='YOUR_HOSTED_PAYMENTS_ENABLED_PUBLIC_KEY', data-name='Jasmine Green Tea', data-description='Smooth tea with a rich jasmine bouquet', data-reference='99999', data-amount='3000', data-color='#12B830')
+  | Buy Now
+
+block append scripts
+  script(type='text/javascript', src='https://www.simplify.com/commerce/simplify.pay.js')
