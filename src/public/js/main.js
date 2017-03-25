@@ -3,27 +3,27 @@ $(document).ready(function() {
   $("#a").click(function addAnotherItemForm(){
     console.log("trying to invoke");
     $('#listOfItems').append(`<div class="registry-item"><div class="form-group">
-  <label class="col-sm-3 control-label" for="nameOfItem">Item Name</label>
+  <label class="col-sm-3 control-label" for="nameOfItem[]">Item Name</label>
   <div class="col-sm-7">
-    <input class="form-control" type="text" name="nameOfItem" id="nameOfItem"/>
+    <input class="form-control" type="text" name="nameOfItem[]" id="nameOfItem"/>
   </div>
 </div>
 <div class="form-group">
-  <label class="col-sm-3 control-label" for="itemPrice">Price ($)</label>
+  <label class="col-sm-3 control-label" for="itemPrice[]">Price ($)</label>
   <div class="col-sm-7">
-    <input class="form-control" type="number" name="itemPrice" id="itemPrice"/>
+    <input class="form-control" type="number" name="itemPrice[]" id="itemPrice"/>
   </div>
 </div>
 <div class="form-group">
-  <label class="col-sm-3 control-label" for="itemDescription">Description</label>
+  <label class="col-sm-3 control-label" for="itemDescription[]">Description</label>
   <div class="col-sm-7">
-    <input class="form-control" type="text" name="itemDescription" id="itemDescription"/>
+    <input class="form-control" type="text" name="itemDescription[]" id="itemDescription"/>
   </div>
 </div>
 <div class="form-group">
-  <label class="col-sm-3 control-label" for="itemURL">URL (Optional)</label>
+  <label class="col-sm-3 control-label" for="itemURL[]">URL (Optional)</label>
   <div class="col-sm-7">
-    <input class="form-control" type="text" name="itemURL" id="itemURL"/>
+    <input class="form-control" type="text" name="itemURL[]" id="itemURL"/>
 </div>
   </div>
 </div>`);

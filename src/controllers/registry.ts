@@ -25,18 +25,24 @@ export const getSearchRegistry = (req, res) => {
 
 
 export const saveRegistry = (req, res) => {
-    const item = new Item({
-        name: req.body.nameOfItem,
-        price: req.body.itemPrice,
-        link: req.body.itemURL,
-        description: req.body.itemDescription
-    })
+    console.log(req.body);
+    const size = req.body.nameOfItem.length;
 
-    item.save();
+    const itemIds = [];
+    for(let i = 0; i < size; i++){
+        const item = new Item({
+            name: req.body.nameOfItem[i],
+            price: req.body.itemPrice[i],
+            link: req.body.itemURL[i],
+            description: req.body.itemDescription[i]
+        })
+        item.save();
+        itemIds.push(item.id);
+    }
 
     const registry = new Registry({
         userEmail: req.user.email,
-        items: [item._id]
+        items: itemIds
     })
 
     registry.save();
