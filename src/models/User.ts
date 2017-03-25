@@ -1,4 +1,5 @@
 import * as crypto from 'crypto'
+import Registry from './Registry'
 
 //const bcrypt = require('bcrypt-nodejs')
 const mongoose = require('mongoose');
@@ -8,6 +9,7 @@ const userSchema = new mongoose.Schema({
   password: String,
   passwordResetToken: String,
   passwordResetExpires: Date,
+  registry: Registry,
 
   facebook: String,
   twitter: String,
