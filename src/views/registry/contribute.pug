@@ -1,7 +1,23 @@
 extends ../layout
 
 block content
-    h1 Contribute towards #{item.name}
-    script(type='text/javascript', src='https://www.simplify.com/commerce/simplify.pay.js')
-    button(data-sc-key='YOUR_HOSTED_PAYMENTS_ENABLED_PUBLIC_KEY', data-name='Jasmine Green Tea', data-description='Smooth tea with a rich jasmine bouquet', data-reference='99999', data-amount='3000', data-color='#12B830')
-    | Buy Now
+  h1 Contribute towards #{item.name}
+  .form-horizontal
+    .form-group
+      label.col-sm-3.control-label(for='amount') Amount
+      .col-sm-6
+        input.form-control(type='number', name='amount', id='amount')
+    .form-group
+      .col-sm-3
+      .col-sm-6
+        button.pull-right(id='contribute-btn', data-sc-key=`${SIMPLIFY_COMMERCE_PUBLIC_KEY}`, data-name='Registry Item', data-description='Contribution to registry', data-reference='99999', data-amount='3000', data-color='#12B830')
+          | Contribute Now
+
+block append scripts
+  script.
+    $('#amount').change(function(event) {
+      var amount = parseInt(event.target.value, 10);
+      var amountInCents = amount * 100;
+      document.getElementById('contribute-btn').setAttribute('data-amount', amountInCents);
+    })
+  script(type='text/javascript', src='https://www.simplify.com/commerce/simplify.pay.js')

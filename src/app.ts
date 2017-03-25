@@ -99,6 +99,7 @@ app.use(lusca.xssProtection(true));
 app.use((req, res, next) => {
   res.locals.user = req.user;
   res.locals._ = _
+  res.locals.env = process.env
   next();
 });
 app.use((req, res, next) => {
