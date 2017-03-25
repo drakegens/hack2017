@@ -10,12 +10,12 @@ block content
     .form-group
       .col-sm-3
       .col-sm-6
-        button.pull-right(id='contribute-btn', data-sc-key=`${env.SIMPLIFY_COMMERCE_PUBLIC_KEY}`, data-name='Registry Item', data-description='Contribution to registry', data-reference='99999', data-amount='3000', data-color='#12B830')
+        button.pull-right(id='contribute-btn', data-sc-key=`${env.SIMPLIFY_COMMERCE_PUBLIC_KEY}`, data-redirect-url=`${env.BASE_URL}/registry/contribute/${item.id}/success` data-name='Registry Item', data-description='Contribution to registry', data-reference='99999', data-amount='5000', data-color='#12B830')
           | Contribute Now
 
 block append scripts
   script.
-    $('#amount').change(function(event) {
+    $('#amount').keyup(function(event) {
       var amount = parseInt(event.target.value, 10);
       var amountInCents = amount * 100;
       document.getElementById('contribute-btn').setAttribute('data-amount', amountInCents);

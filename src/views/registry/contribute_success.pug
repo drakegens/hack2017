@@ -1,0 +1,8 @@
+extends ../layout
+
+block content
+    h1 Success! You successfully contributed.
+    - var hasContributions = item.contributions != undefined && item.contributions.length > 0
+    - var contributionAmounts = hasContributions ? _.map(item.contributions, function(item){ return parseInt(item.amount, 10) }) : []
+    - var totalContributions = hasContributions ? _.sum(contributionAmounts) : 0
+    p #{item.name} is now #{totalContributions * 100 / item.price}% funded.

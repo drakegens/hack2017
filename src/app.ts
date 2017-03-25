@@ -145,6 +145,7 @@ app.get('/registry/search', registryController.getSearchRegistry)
 app.get('/registry/:registryId', registryController.getUserRegistry)
 app.post('/registry/new', passportConfig.isAuthenticated, registryController.saveRegistry)
 
+app.get('/registry/contribute/:itemId/success', registryController.getContributeSuccess)
 app.get('/registry/contribute/:itemId', registryController.getContribute)
 /**
  * API examples routes.
