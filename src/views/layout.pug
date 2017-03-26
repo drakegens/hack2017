@@ -10,7 +10,7 @@ html
     link(rel='shortcut icon', href='/favicon.png')
     link(rel='stylesheet', href='/css/main.css')
 
-  body
+  body(id=(title === 'Home' ? 'main-page' : ''))
     include partials/header
 
     .container
