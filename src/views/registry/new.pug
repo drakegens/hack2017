@@ -12,22 +12,26 @@ block content
           .col-sm-7
             input.form-control(type='text', name='nameOfItem[]', id='nameOfItem')
         .form-group
-          label.col-sm-3.control-label(for='itemPrice[]') Price ($)
+          label.col-sm-3.control-label(for='itemPrice[]') Price
           .col-sm-7
-            input.form-control(type='number', name='itemPrice[]', id='itemPrice')
+            .input-group
+              .input-group-addon
+                | $
+              input.form-control(type='number', name='itemPrice[]', id='itemPrice')
         .form-group
           label.col-sm-3.control-label(for='itemDescription[]') Description
           .col-sm-7
             input.form-control(type='text', name='itemDescription[]', id='itemDescription')
         .form-group
-          label.col-sm-3.control-label(for='itemURL[]') URL (Optional)
+          label.col-sm-3.control-label(for='itemURL[]') Item URL (Optional)
           .col-sm-7
             input.form-control(type='text', name='itemURL[]', id='itemURL')
     .form-group
-      .col-sm-offset-2.col-sm-8
-        a.btn.btn-primary(id='a', href='javascript:void(0)')
+      .col-sm-offset-8.col-sm-2
+        a.pull-right(id='a', href='javascript:void(0)')
+          i.fa.fa-plus
           | Add Another Item
     .form-group
-      .col-sm-offset-2.col-sm-8
-        button.btn.btn-primary(type='submit')
+      .col-sm-offset-8.col-sm-2
+        button.pull-right.btn.btn-primary(type='submit')
           | Submit Registry

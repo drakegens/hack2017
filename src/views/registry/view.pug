@@ -4,7 +4,7 @@ block content
   h1 #{user.profile.name} Registry
   .list-group
     each item in user.registry.items
-      .list-group-item
+      .list-group-item.clearfix
         h3 #{item.name}
         - var hasContributions = item.contributions != undefined && item.contributions.length > 0
         - var contributionAmounts = hasContributions ? _.map(item.contributions, function(item){ return parseInt(item.amount, 10) }) : []
@@ -18,4 +18,4 @@ block content
         .progress
           .progress-bar(role='progress-bar', aria-valuenow="", aria-valuemin="0", aria-valuemax="100", style=`width: ${percent}%;`)
             | #{percent}%
-        a.btn.btn-primary(href=`/registry/contribute/${item.id}`) Contribute
+        a.pull-right.btn.btn-primary(href=`/registry/contribute/${item.id}`) Contribute

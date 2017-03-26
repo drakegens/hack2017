@@ -1,8 +1,12 @@
 extends ../layout
 
 block content
-    h1 Success! You successfully contributed.
+    h1 Success!
     - var hasContributions = item.contributions != undefined && item.contributions.length > 0
     - var contributionAmounts = hasContributions ? _.map(item.contributions, function(item){ return parseInt(item.amount, 10) }) : []
     - var totalContributions = hasContributions ? _.sum(contributionAmounts) : 0
-    p #{item.name} is now #{totalContributions * 100 / item.price}% funded.
+    - var percent = totalContributions * 100 / item.price
+    p You successfully contributed. Now, thanks to you, #{item.name} is now #{percent}% funded!
+    .progress
+          .progress-bar(role='progress-bar', aria-valuenow="", aria-valuemin="0", aria-valuemax="100", style=`width: ${percent}%;`)
+            | #{percent}%
