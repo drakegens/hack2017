@@ -15,10 +15,13 @@ export const getSearchRegistry = (req, res) => {
         if (err) {
             users = []
         }
+
+        const usersWithRegistries = _.filter(users, (user) => user.registry != undefined)
+
         res.render(`registry/search`, {
             title: 'Find Registry',
             search: req.query.search,
-            users: users,
+            users: usersWithRegistries,
         })
     })
 }

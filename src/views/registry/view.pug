@@ -2,12 +2,20 @@ extends ../layout
 
 block content
   h1 #{user.profile.name} Registry
-  each item in user.registry.items
-    h2 Name of Item: #{item.name}
-    - var hasContributions = item.contributions != undefined && item.contributions.length > 0
-    - var contributionAmounts = hasContributions ? _.map(item.contributions, function(item){ return parseInt(item.amount, 10) }) : []
-    - var totalContributions = hasContributions ? _.sum(contributionAmounts) : 0
-    h2 Price: $#{item.price} ($#{parseInt(item.price) - totalContributions} left)
-    h2 URL: #{item.link}
-    h2 Description: #{item.description}
-    a.btn.btn-primary(href=`/registry/contribute/${item.id}`) Contribute
+  .list-group
+    each item in user.registry.items
+      .list-group-item
+        h3 #{item.name}
+        - var hasContributions = item.contributions != undefined && item.contributions.length > 0
+        - var contributionAmounts = hasContributions ? _.map(item.contributions, function(item){ return parseInt(item.amount, 10) }) : []
+        - var totalContributions = hasContributions ? _.sum(contributionAmounts) : 0
+        - var percent = totalContributions * 100 / parseInt(item.price)
+        if item.link != ''
+          h4 URL: #{item.link}
+        .well.well-lg
+          | #{item.description}
+        h4 $#{totalContributions} of $#{item.price}
+        .progress
+          .progress-bar(role='progress-bar', aria-valuenow="", aria-valuemin="0", aria-valuemax="100", style=`width: ${percent}%;`)
+            | #{percent}%
+        a.btn.btn-primary(href=`/registry/contribute/${item.id}`) Contribute
