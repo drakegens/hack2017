@@ -2,15 +2,16 @@ extends layout
 
 block content
   h1 Get It Together
-  p.lead Ask for more than just cutlery and toasters
+  p.lead Register for more than just cutlery and toasters
   hr
-  .row
-    .col-sm-3
-    .col-sm-6
-      h2 Find a Registry
-      form.form-horizontal(action='/registry/search', method='GET')
-        .form-group
-          .input-group
-            .input-group-addon
-              i.fa.fa-search
-            input.form-control(type='text', name='search', id='search', placeholder='Search for a registry')
+  h2 Find a Registry
+  form.form-horizontal(action='/registry/search', method='GET')
+    .form-group
+      .col-sm-6
+        .input-group
+          .input-group-addon
+            i.fa.fa-search
+          input.form-control(type='text', name='search', id='search', placeholder='Search for a registry')
+  hr
+  h2 Register with us
+  p descriptions
